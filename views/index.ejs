@@ -1,0 +1,44 @@
+<%- include("partials/head"); -%>
+<%- include("partials/header"); -%>
+<%- include("partials/sidebar"); -%>
+
+
+
+<main id="main" class="main">
+
+  <div class="pagetitle">
+    <h1>Dashboard</h1>
+  </div><!-- End Page Title -->
+
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-6">
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Exams</h5>
+            <p><%= exams.length%></p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-lg-6">
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Questions</h5>
+            <p><%=questions.length%></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main><!-- End #main -->
+
+
+  
+  <%- include("partials/footer"); -%>
+  <%- include("partials/foot"); -%>

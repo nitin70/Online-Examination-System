@@ -1,0 +1,72 @@
+<%- include("partials/head"); -%>
+<%- include("partials/header"); -%>
+<%- include("partials/sidebar"); -%>
+
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Data Tables</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/index">Home</a></li>
+          <li class="breadcrumb-item">Tables</li>
+          <li class="breadcrumb-item active">Data</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Questions</h5>
+
+              <!-- Table with stripped rows -->
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th>
+                      <b>#</b>
+                    </th>
+                    <th>Question</th>
+                    <th>Options</th>
+                    <th>Correct</th>
+                    <th>Modiefy</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% questions.forEach((question,index)=>{ %>
+                        <tr>
+                           <td><%=index+1 %></td>
+                            <td><%= question.question%></td>
+                            <td><%= question.options%></td>
+                            <td><%= question.options[question.answer]%></td>
+                            <td>
+                            <form action="/updateQuestion" method="post">
+                                <input type="hidden" name="questionId" value="<%=question.id%>"></input>
+                                <button type="submit" value="edit" name="button" class="btn btn1 btn-light">Edit</button>       
+                                <button type="submit" value="delete" name="button" class="btn btn2 btn-dark">Delete</button>
+                            </form>
+                            </td>
+                            <td></td>
+                        </tr>
+             <% }) %>
+                  
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+ 
+  <%- include("partials/footer"); -%>
+  <%- include("partials/foot"); -%>

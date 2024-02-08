@@ -1,0 +1,72 @@
+<%- include("partials/head"); -%>
+<%- include("partials/header"); -%>
+<%- include("partials/sidebar"); -%>
+
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Data Tables</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/index">Home</a></li>
+          <li class="breadcrumb-item">Tables</li>
+          <li class="breadcrumb-item active">Data</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Questions</h5>
+
+              <!-- Table with stripped rows -->
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th>
+                      <b>#</b>
+                    </th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Total Questions</th>
+                    <th>Modefy</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                    <% exams.forEach((exam,index)=>{ %>
+                        <tr>
+                          <td><%=index+1 %></td>
+                          <td class="message-item" style="height: 10px; width: 10px;"><img src="<%=exam.image%>" alt="exam image" class="rounded-circle" ></td>
+                           <td><%=exam.name%></td>
+                            <td><%=exam.questions.length %></td>
+                            <td>
+                              <form action="/updateExam" method="post">
+                                  <input type="hidden" name="examId" value="<%=exam.id%>"></input>
+                                  <button type="submit" value="edit" name="button" class="btn btn1 btn-light">Edit</button>       
+                                  <button type="submit" value="delete" name="button" class="btn btn2 btn-dark">Delete</button>
+                              </form>
+                              </td>
+                        </tr>
+             <% }) %>
+                  
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+ 
+  <%- include("partials/footer"); -%>
+  <%- include("partials/foot"); -%>
